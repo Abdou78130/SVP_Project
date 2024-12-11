@@ -4,6 +4,7 @@ import LeanMachines.Refinement.Relational.Basic
 import LeanMachines.Refinement.Relational.Convergent
 import LeanMachines.Refinement.Relational.Abstract
 
+import LeanMachinesExamples.EventB.Bridge.Bridge1
 import LeanMachinesExamples.EventB.Bridge.Bridge2
 
 /-!
@@ -89,8 +90,9 @@ def Bridge3.invariant_34 (b : Bridge3 ctx) :=
 
 
 def EnterFromMainland₁ : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit :=
-  newREvent'' Bridge1.EnterFromMainland.toOrdinaryEvent {
-    guard := fun b3 =>  b3.nbOnIsland + b3.nbToIsland + 1 ≠ ctx.maxCars
+  newREvent Bridge2.EnterFromMainland₁.toOrdinaryEvent {
+
+    guard := fun b3 =>  b3.ml_out_10 ∧ b3.nbOnIsland + b3.nbToIsland + 1 ≠ ctx.maxCars
 
     safety := sorry
 
