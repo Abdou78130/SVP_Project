@@ -86,3 +86,19 @@ def Bridge3.invariant_33 (b : Bridge3 ctx) :=
   b.A = 0 ∨ b.C = 0
 def Bridge3.invariant_34 (b : Bridge3 ctx) :=
   b.A  + b.B + b.C ≤ ctx.maxCars
+
+
+def EnterFromMainland₁ : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit :=
+  newREvent'' Bridge1.EnterFromMainland.toOrdinaryEvent {
+    guard := fun b3 =>  b3.nbOnIsland + b3.nbToIsland + 1 ≠ ctx.maxCars
+
+    safety := sorry
+
+    action := sorry
+
+    strengthening := sorry
+
+    simulation := sorry
+
+
+}
