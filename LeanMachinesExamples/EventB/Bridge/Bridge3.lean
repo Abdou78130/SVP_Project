@@ -263,11 +263,92 @@ def IslandTLGreen : ConvergentRDetEvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Uni
 
 }
 
-def MainlandOutArr : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit :=
-  newREvent'' {
-    guard := sorry
 
-    action := sorry
 
-    po := sorry
-  }
+
+-- New event
+
+def MainlandOutArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
+  newEvent'' {
+    guard := fun b => b.ML_OUT_SR = Sensor.Off ∧ not b.ml_out_10
+
+    action := fun b => {b with ML_OUT_SR := Sensor.On}
+
+    safety := sorry
+}
+
+def MainlandInArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
+  newEvent'' {
+    guard := fun b => b.ML_IN_SR = Sensor.Off ∧ not b.ml_in_10 ∧ b.C > 0
+
+    action := fun b => {b with ML_IN_SR := Sensor.On}
+
+    safety := sorry
+}
+
+
+def IslandInArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
+  newEvent'' {
+    guard :=  fun b => b.IL_IN_SR = Sensor.Off ∧ not b.il_in_10 ∧ b.A > 0
+
+    action := fun b => {b with IL_IN_SR := Sensor.On}
+
+    safety := sorry
+}
+
+
+def IslandOutArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
+  newEvent'' {
+    guard := fun b => b.IL_OUT_SR = Sensor.Off ∧ not b.il_out_10 ∧ b.B > 0
+    action := fun b => {b with IL_OUT_SR := Sensor.On}
+
+    safety := sorry
+}
+
+def MainlandOutDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
+  newEvent'' {
+    guard := fun b => b.ML_OUT_SR = Sensor.On ∧ b.mainlandTL = Color.Green
+
+    action := fun b => {b with IL_OUT_SR := Sensor.Off
+                               ml_out_10 := True
+                               A := b.A + 1}
+
+    safety := sorry
+}
+
+def MainlandInDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
+  newEvent'' {
+    guard := fun b => b.ML_IN_SR = Sensor.On
+
+    action := fun b => {b with ML_IN_SR := Sensor.Off
+                               ml_in_10 := True
+                               C := b.C - 1}
+
+    safety := sorry
+}
+
+
+def IslandInDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
+  newEvent'' {
+    guard := fun b => b.IL_IN_SR = Sensor.On
+
+    action := fun b => {b with IL_IN_SR := Sensor.Off
+                               il_in_10 := True
+                               A := b.A - 1
+                               B := b.B + 1}
+
+    safety := sorry
+}
+
+
+def IslandOutDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
+  newEvent'' {
+    guard := fun b => b.IL_IN_SR = Sensor.On ∧ b.islandTL = Color.Green
+
+    action := fun b => {b with IL_IN_SR := Sensor.Off
+                               il_in_10 := True
+                               B := b.B - 1
+                               C := b.C + 1}
+
+    safety := sorry
+}
