@@ -132,7 +132,9 @@ def EnterFromMainland₁ : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
 
     guard := fun b3 =>  b3.ml_out_10 ∧ b3.nbOnIsland + b3.nbToIsland + 1 ≠ ctx.maxCars
 
-    action := sorry
+    action := fun b3 =>  {b3 with nbToIsland := b3.nbToIsland + 1
+                                  mainlandPass := true
+                                  ml_out_10 := false}
 
     safety := sorry
 
@@ -145,9 +147,12 @@ def EnterFromMainland₁ : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
 def EnterFromMainland₂ : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit :=
   newREvent'' Bridge2.EnterFromMainland₂.toOrdinaryEvent {
 
-    guard := fun b3 =>  b3.ml_out_10 ∧ b3.nbOnIsland + b3.nbToIsland + 1 = ctx.maxCars
+    guard := fun b3 => b3.ml_out_10 ∧ b3.nbOnIsland + b3.nbToIsland + 1 = ctx.maxCars
 
-    action := sorry
+    action := fun b3 => {b3 with nbToIsland := b3.nbToIsland + 1
+                                 mainlandTL := Color.Red
+                                 mainlandPass := true
+                                 ml_out_10 := false}
 
     safety := sorry
 
@@ -161,7 +166,10 @@ def LeaveIsland₁ : ConvergentREvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
   newConvergentREvent'' Bridge2.LeaveIsland₁.toConvergentEvent.toAnticipatedEvent.toOrdinaryEvent {
     guard := fun b3 => b3.il_out_10 ∧ b3.nbOnIsland ≠ 1
 
-    action := sorry
+    action := fun b3 => {b3 with nbOnIsland := b3.nbOnIsland - 1
+                                 nbFromIsland := b3.nbFromIsland + 1
+                                 islandPass := true
+                                 il_out_10 := false}
 
     safety := sorry
 
@@ -179,7 +187,12 @@ def LeaveIsland₂ : ConvergentREvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
   newConvergentREvent'' Bridge2.LeaveIsland₂.toConvergentEvent.toAnticipatedEvent.toOrdinaryEvent {
     guard := fun b3 => b3.il_out_10 ∧ b3.nbOnIsland = 1
 
-    action := sorry
+    action := fun b3 => {b3 with nbOnIsland := b3.nbOnIsland - 1
+                                 nbFromIsland := b3.nbFromIsland + 1
+                                 islandTL := Color.Red
+                                 islandPass := true
+                                 il_out_10 := false
+                                 }
 
     safety := sorry
 
@@ -234,7 +247,10 @@ def MailandTLGreen : ConvergentRDetEvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Un
     guard := fun b3 => b3.mainlandTL = Color.Red ∧ b3.nbToIsland + b3.nbOnIsland < ctx.maxCars ∧ b3.nbFromIsland = 0
                       ∧ b3.islandPass = true ∧ b3.il_out_10 = false
 
-    action := sorry
+    action := fun b3 => {b3 with mainlandTL := Color.Green
+                                 islandTL := Color.Red
+                                 mainlandPass := false
+                                 }
 
     safety := sorry
 
@@ -251,7 +267,10 @@ def IslandTLGreen : ConvergentRDetEvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Uni
     guard := fun b3 => b3.islandTL = Color.Red ∧ b3.nbOnIsland > 0 ∧ b3.nbToIsland = 0 ∧ b3.mainlandPass = true
                       ∧ b3.ml_out_10 = false
 
-    action := sorry
+    action := fun b3 => {b3 with islandTL := Color.Green
+                                 mainlandTL := Color.Red
+                                 mainlandPass := false
+                                 }
 
     safety := sorry
 
