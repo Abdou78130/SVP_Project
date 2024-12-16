@@ -136,7 +136,36 @@ def EnterFromMainland₁ : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
                                   mainlandPass := true
                                   ml_out_10 := false}
 
-    safety := sorry
+    safety := fun b => by
+      simp [Machine.invariant,
+      Bridge3.invariant_12,
+      Bridge3.invariant_13,
+      Bridge3.invariant_14,
+      Bridge3.invariant_15,
+      Bridge3.invariant_16,
+      Bridge3.invariant_17,
+      Bridge3.invariant_18,
+      Bridge3.invariant_19,
+      Bridge3.invariant_20,
+      Bridge3.invariant_21,
+      Bridge3.invariant_22,
+      Bridge3.invariant_23,
+      Bridge3.invariant_24,
+      Bridge3.invariant_25,
+      Bridge3.invariant_26,
+      Bridge3.invariant_27,
+      Bridge3.invariant_28,
+      Bridge3.invariant_29,
+      Bridge3.invariant_30,
+      Bridge3.invariant_31,
+      Bridge3.invariant_32,
+      Bridge3.invariant_33,
+      Bridge3.invariant_34]
+      intros  Hinv12 Hinv13 Hinv14 Hinv15 Hinv16 Hinv17
+        Hinv18 Hinv19 Hinv20 Hinv21 Hinv22 Hinv23 Hinv24 Hinv25 Hinv26
+        Hinv27 Hinv28 Hinv29 Hinv30 Hinv31 Hinv32 Hinv33_phys Hinv34_phys
+        Hinv₁ Hinv₂ Hinv₃ Hinv₄ Hinv₅ Hinv33 Hinv34 Hgrd₁ Hgrd₂
+
 
     strengthening := sorry
 
@@ -343,6 +372,7 @@ def MainlandInArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
     action := fun b => {b with ML_IN_SR := Sensor.On}
 
     safety := sorry
+
 }
 
 
