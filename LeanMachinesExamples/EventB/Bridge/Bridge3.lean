@@ -287,6 +287,13 @@ def IslandTLGreen : ConvergentRDetEvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Uni
 
 -- New event
 
+theorem exchange (n : Nat) :
+  n > 0 → 0 < n  :=
+by
+  intro H1
+  exact H1
+
+
 def MainlandOutArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
   newEvent'' {
     guard := fun b => b.ML_OUT_SR = Sensor.Off ∧ not b.ml_out_10
@@ -326,6 +333,15 @@ def MainlandOutArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
       constructor
       case left =>
         intro H4
+        have H5 := exchange b.A
+        apply H5
+        have H6 := Bridge3.invariant_12 b
+        cases H2
+        case intro H7 H8  =>
+          simp [Bridge3.invariant_12]
+
+
+
 
 
       -- all_goals (repeat constructor)

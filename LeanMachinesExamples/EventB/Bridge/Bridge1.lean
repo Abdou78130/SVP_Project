@@ -21,11 +21,11 @@ namespace BridgeSpec
 
 /-- The refined state (simple data-)-/
 structure Bridge1 (ctx : Context) where
-  /-- Number of cars on the bridge, coming from mainland and going towards the island. -/
+  /-- a Number of cars on the bridge, coming from mainland and going towards the island. -/
   nbToIsland : Nat
-  /-- Number of cars present on the island. -/
+  /-- b Number of cars present on the island. -/
   nbOnIsland : Nat
-  /-- Number of cars on the bridge, returning to mainland. -/
+  /-- c Number of cars on the bridge, returning to mainland. -/
   nbFromIsland : Nat
 
 @[simp]
