@@ -293,7 +293,47 @@ def MainlandOutArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
 
     action := fun b => {b with ML_OUT_SR := Sensor.On}
 
-    safety := sorry
+    safety := fun b => by
+      intro H1 H2
+      simp
+      simp [*] at H2
+      simp [Machine.invariant,
+      Bridge3.invariant_12,
+      Bridge3.invariant_13,
+      Bridge3.invariant_14,
+      Bridge3.invariant_15,
+      Bridge3.invariant_16,
+      Bridge3.invariant_17,
+      Bridge3.invariant_18,
+      Bridge3.invariant_19,
+      Bridge3.invariant_20,
+      Bridge3.invariant_21,
+      Bridge3.invariant_22,
+      Bridge3.invariant_23,
+      Bridge3.invariant_24,
+      Bridge3.invariant_25,
+      Bridge3.invariant_26,
+      Bridge3.invariant_27,
+      Bridge3.invariant_28,
+      Bridge3.invariant_29,
+      Bridge3.invariant_30,
+      Bridge3.invariant_31,
+      Bridge3.invariant_32,
+      Bridge3.invariant_33,
+      Bridge3.invariant_34]
+
+      simp [*]
+      constructor
+      case left =>
+        intro H4
+
+
+      -- all_goals (repeat constructor)
+
+
+
+
+
 }
 
 def MainlandInArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
