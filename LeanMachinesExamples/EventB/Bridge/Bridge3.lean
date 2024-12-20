@@ -231,86 +231,67 @@ def LeaveIsland₁ : ConvergentREvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
         Hinv27 Hinv28 Hinv29 Hinv30 Hinv31 Hinv32 Hinv33_phys Hinv34_phys
         Hinv₁ Hinv₂ Hinv₃ Hinv₄ Hinv₅ Hinv33 Hinv34 Hgrd₁ Hgrd₂
       constructor
-      case left =>
-        exact fun a => Hinv12 a
+      exact fun a => Hinv12 a
       case right =>
-        constructor
-        case left =>
-          exact fun a => Hinv13 a
-        case right =>
-          constructor
-          case left =>
-            exact fun a => Hinv14 a
-          case right =>
-            constructor
-            case left =>
-              exact fun a => Hinv15 a
-            case right =>
-              constructor
-              case left =>
-                exact fun a => Hinv17 a
-              case right =>
-                constructor
-                case left =>
-                  exact fun a => Hinv19 a
-                case right =>
-                  constructor
-                  case left =>
-                    exact fun a => Hinv20 a
-                  case right =>
-                    constructor
-                    case left =>
-                      exact fun a a_1 => Hinv21 a a_1
-                    case right =>
-                      constructor
-                      case left =>
-                        exact fun a a_1 => Hinv22 a a_1
-                      case right =>
-                        constructor
-                        case left =>
-                          exact fun a a_1 => Hinv23 a a_1
-                        case right =>
-                          constructor
-                          case left =>
-                            exact fun a a_1 => Hinv24 a a_1
-                          case right =>
-                            constructor
-                            case left =>
-                              intro HX
-                              have HX2 : b.il_out_10 = true → b.B = b.nbOnIsland := by
-                                exact fun a => Hinv25 HX Hgrd₁
-                              have HX3 : b.B = b.nbOnIsland := by
-                                exact Hinv25 HX Hgrd₁
-                              have HX5 :  b.B = b.nbOnIsland → b.B = b.nbOnIsland + 1 - 1 := by
-                                exact fun a => Hinv25 HX Hgrd₁
-                              have HX6 : b.B = b.nbOnIsland + 1 - 1 → b.B = b.nbOnIsland - 1 + 1 := by
-                                simp_arith [*]
-                              apply HX6
-                              apply HX5
-                              exact Hinv25 HX Hgrd₁
-                            case right =>
-                              constructor
-                              exact fun a => Hinv27 a Hgrd₁
-                              case right =>
-                              constructor
-                              exact fun a => Hinv29 Hgrd₁ a
-                              case right =>
-                              constructor
-                              exact fun a => Hinv30 Hgrd₁ a
-                              case right =>
-                              constructor
-                              exact Hinv33_phys
-                              case right =>
-                              constructor
-                              exact Hinv34_phys
-                              case right =>
-                              constructor
-                              case left =>
-
-
-
-
-
+      constructor
+      exact fun a => Hinv13 a
+      case right =>
+      constructor
+      exact fun a => Hinv14 a
+      case right =>
+      constructor
+      exact fun a => Hinv15 a
+      case right =>
+      constructor
+      exact fun a => Hinv17 a
+      case right =>
+      constructor
+      exact fun a => Hinv19 a
+      case right =>
+      constructor
+      exact fun a => Hinv20 a
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv21 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv22 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv23 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv24 a a_1
+      case right =>
+      constructor
+      intro HX
+      have HX2 : b.il_out_10 = true → b.B = b.nbOnIsland := by
+        exact fun a => Hinv25 HX Hgrd₁
+      have HX3 : b.B = b.nbOnIsland := by
+        exact Hinv25 HX Hgrd₁
+      have HX5 :  b.B = b.nbOnIsland → b.B = b.nbOnIsland + 1 - 1 := by
+        exact fun a => Hinv25 HX Hgrd₁
+      have HX6 : b.B = b.nbOnIsland + 1 - 1 → b.B = b.nbOnIsland - 1 + 1 := by
+        simp_arith [*]
+        sorry
+      case right =>
+      constructor
+      exact fun a => Hinv27 a Hgrd₁
+      case right =>
+      constructor
+      exact fun a => Hinv29 Hgrd₁ a
+      case right =>
+      constructor
+      exact fun a => Hinv30 Hgrd₁ a
+      case right =>
+      constructor
+      exact Hinv33_phys
+      case right =>
+      constructor
+      exact Hinv34_phys
+      case right =>
+      constructor
+      sorry
 
 
 
@@ -335,7 +316,70 @@ def LeaveIsland₂ : ConvergentREvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
                                  il_out_10 := false
                                  }
 
-    safety := sorry
+    safety := fun b => by
+                simp [Machine.invariant,
+                  Bridge3.invariant_12,
+                  Bridge3.invariant_13,
+                  Bridge3.invariant_14,
+                  Bridge3.invariant_15,
+                  Bridge3.invariant_16,
+                  Bridge3.invariant_17,
+                  Bridge3.invariant_18,
+                  Bridge3.invariant_19,
+                  Bridge3.invariant_20,
+                  Bridge3.invariant_21,
+                  Bridge3.invariant_22,
+                  Bridge3.invariant_23,
+                  Bridge3.invariant_24,
+                  Bridge3.invariant_25,
+                  Bridge3.invariant_26,
+                  Bridge3.invariant_27,
+                  Bridge3.invariant_28,
+                  Bridge3.invariant_29,
+                  Bridge3.invariant_30,
+                  Bridge3.invariant_31,
+                  Bridge3.invariant_32,
+                  Bridge3.invariant_33,
+                  Bridge3.invariant_34]
+                intros Hinv12 Hinv13 Hinv14 Hinv15 Hinv16 Hinv17 Hinv18 Hinv19 Hinv20 Hinv21 Hinv22 Hinv23 Hinv24 Hinv25 Hinv26 Hinv27 Hinv28 Hinv29 Hinv30 Hinv31 Hinv32 Hinv33_phys Hinv34_phys Hinv₁ Hinv₂ Hinv₃ Hinv₄ Hinv₅ Hinv33 Hinv34 Hgrd₁ Hgrd₂
+                constructor
+                exact fun a => Hinv12 a
+                case right =>
+                constructor
+                exact fun a => Hinv13 a
+                case right =>
+                constructor
+                exact fun a => Hinv14 a
+                case right =>
+                constructor
+                exact fun a => Hinv15 a
+                case right =>
+                constructor
+                exact fun a => Hinv17 a
+                case right =>
+                constructor
+                exact fun a => Hinv19 a
+                case right =>
+                constructor
+                exact fun a => Hinv20 a
+                case right =>
+                constructor
+                exact fun a a_1 => Hinv21 a a_1
+                case right =>
+                constructor
+                exact fun a a_1 => Hinv22 a a_1
+                case right =>
+                constructor
+                exact fun a a_1 => Hinv23 a a_1
+                case right =>
+                constructor
+                exact fun a a_1 => Hinv24 a a_1
+                case right =>
+                constructor
+                apply?
+
+
+
 
     variant := sorry
 
@@ -393,7 +437,97 @@ def MailandTLGreen : ConvergentRDetEvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Un
                                  mainlandPass := false
                                  }
 
-    safety := sorry
+    safety := fun b => by
+                simp [Machine.invariant,
+                  Bridge3.invariant_12,
+                  Bridge3.invariant_13,
+                  Bridge3.invariant_14,
+                  Bridge3.invariant_15,
+                  Bridge3.invariant_16,
+                  Bridge3.invariant_17,
+                  Bridge3.invariant_18,
+                  Bridge3.invariant_19,
+                  Bridge3.invariant_20,
+                  Bridge3.invariant_21,
+                  Bridge3.invariant_22,
+                  Bridge3.invariant_23,
+                  Bridge3.invariant_24,
+                  Bridge3.invariant_25,
+                  Bridge3.invariant_26,
+                  Bridge3.invariant_27,
+                  Bridge3.invariant_28,
+                  Bridge3.invariant_29,
+                  Bridge3.invariant_30,
+                  Bridge3.invariant_31,
+                  Bridge3.invariant_32,
+                  Bridge3.invariant_33,
+                  Bridge3.invariant_34]
+                intros Hinv12 Hinv13 Hinv14 Hinv15 Hinv16 Hinv17 Hinv18 Hinv19 Hinv20 Hinv21 Hinv22 Hinv23 Hinv24 Hinv25 Hinv26 Hinv27 Hinv28 Hinv29 Hinv30 Hinv31 Hinv32 Hinv33_phys Hinv34_phys Hinv₁ Hinv₂ Hinv₃ Hinv₄ Hinv₅ Hinv33 Hinv34 Hgrd₁ Hgrd₂ H35 H36 H37
+                constructor
+                exact fun a => Hinv12 a
+                case right =>
+                exact fun a => Hinv13 a
+                constructor
+                case right =>
+                exact fun a => Hinv14 a
+                constructor
+                case right =>
+                exact H37
+                constructor
+                case right =>
+                exact fun a => Hinv17 a
+                constructor
+                case right =>
+                exact fun a => Hinv18 a
+                constructor
+                case right =>
+                exact fun a => Hinv19 a
+                constructor
+                case right =>
+                exact fun a => Hinv20 a
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv21 a a_1
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv22 a a_1
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv23 a a_1
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv24 a a_1
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv25 a a_1
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv26 a H37
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv27 a a_1
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv28 a H37
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv29 a a_1
+                constructor
+                case right =>
+                exact fun a a_1 => Hinv30 a a_1
+                constructor
+                case right =>
+                exact fun a a => Hinv31 H37 a
+                constructor
+                case right =>
+                exact fun a a => Hinv32 H37 a
+                constructor
+                case right =>
+                exact Hinv33_phys
+                constructor
+                case right =>
+                exact Hinv34_phys
+
 
     variant := sorry
 
