@@ -165,7 +165,64 @@ def EnterFromMainland₁ : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
         Hinv18 Hinv19 Hinv20 Hinv21 Hinv22 Hinv23 Hinv24 Hinv25 Hinv26
         Hinv27 Hinv28 Hinv29 Hinv30 Hinv31 Hinv32 Hinv33_phys Hinv34_phys
         Hinv₁ Hinv₂ Hinv₃ Hinv₄ Hinv₅ Hinv33 Hinv34 Hgrd₁ Hgrd₂
-
+      constructor
+      exact fun a => Hinv12 a
+      case right =>
+      constructor
+      exact fun a => Hinv13 a
+      case right =>
+      constructor
+      exact fun a => Hinv14 a
+      case right =>
+      constructor
+      exact fun a => Hinv16 a
+      case right =>
+      constructor
+      exact fun a => Hinv17 a
+      case right =>
+      constructor
+      exact fun a => Hinv18 a
+      case right =>
+      constructor
+      exact fun a => Hinv19 a
+      case right =>
+      constructor
+      exact fun a => Hinv21 a Hgrd₁
+      case right =>
+      constructor
+      exact fun a => Hinv22 a Hgrd₁
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv25 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv26 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv27 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv28 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv29 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv30 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv31 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv32 a a_1
+      case right =>
+      constructor
+      exact Hinv33_phys
+      case right =>
+      constructor
+      exact Hinv34_phys
+      case right =>
+      sorry
 
 
     strengthening := sorry
@@ -184,7 +241,95 @@ def EnterFromMainland₂ : OrdinaryREvent (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
                                  mainlandPass := true
                                  ml_out_10 := false}
 
-    safety := sorry
+
+    safety := fun b => by
+      simp [Machine.invariant,
+      Bridge3.invariant_12,
+      Bridge3.invariant_13,
+      Bridge3.invariant_14,
+      Bridge3.invariant_15,
+      Bridge3.invariant_16,
+      Bridge3.invariant_17,
+      Bridge3.invariant_18,
+      Bridge3.invariant_19,
+      Bridge3.invariant_20,
+      Bridge3.invariant_21,
+      Bridge3.invariant_22,
+      Bridge3.invariant_23,
+      Bridge3.invariant_24,
+      Bridge3.invariant_25,
+      Bridge3.invariant_26,
+      Bridge3.invariant_27,
+      Bridge3.invariant_28,
+      Bridge3.invariant_29,
+      Bridge3.invariant_30,
+      Bridge3.invariant_31,
+      Bridge3.invariant_32,
+      Bridge3.invariant_33,
+      Bridge3.invariant_34]
+      intros  Hinv12 Hinv13 Hinv14 Hinv15 Hinv16 Hinv17
+        Hinv18 Hinv19 Hinv20 Hinv21 Hinv22 Hinv23 Hinv24 Hinv25 Hinv26
+        Hinv27 Hinv28 Hinv29 Hinv30 Hinv31 Hinv32 Hinv33_phys Hinv34_phys
+        Hinv₁ Hinv₂ Hinv₃ Hinv₄ Hinv₅ Hinv33 Hinv34 Hgrd₁ Hgrd₂
+      constructor
+      exact fun a => Hinv12 a
+      case right =>
+      constructor
+      exact fun a => Hinv13 a
+      case right =>
+      constructor
+      exact fun a => Hinv14 a
+      case right =>
+      constructor
+      exact fun a => Hinv16 a
+      case right =>
+      constructor
+      exact fun a => Hinv17 a
+      case right =>
+      constructor
+      exact fun a => Hinv18 a
+      case right =>
+      constructor
+      exact fun a => Hinv19 a
+      case right =>
+      constructor
+      exact fun a => Hinv21 a Hgrd₁
+      case right =>
+      constructor
+      exact fun a => Hinv22 a Hgrd₁
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv25 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv26 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv27 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv28 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv29 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv30 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv31 a a_1
+      case right =>
+      constructor
+      exact fun a a_1 => Hinv32 a a_1
+      case right =>
+      constructor
+      exact Hinv33_phys
+      case right =>
+      constructor
+      exact Hinv34_phys
+      case right =>
+      sorry
+
 
     strengthening := sorry
 
@@ -274,6 +419,7 @@ def LeaveIsland₁ : ConvergentREvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
       have HX6 : b.B = b.nbOnIsland + 1 - 1 → b.B = b.nbOnIsland - 1 + 1 := by
         simp_arith [*]
         sorry
+        -- la preuve est fausse, vous l'avez expliquer en classe
       case right =>
       constructor
       exact fun a => Hinv27 a Hgrd₁
@@ -290,9 +436,8 @@ def LeaveIsland₁ : ConvergentREvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
       constructor
       exact Hinv34_phys
       case right =>
-      constructor
       sorry
-
+      sorry
 
 
     variant := sorry
@@ -376,8 +521,9 @@ def LeaveIsland₂ : ConvergentREvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Unit 
                 exact fun a a_1 => Hinv24 a a_1
                 case right =>
                 constructor
-                apply?
-
+                intro hX1
+                sorry
+                sorry
 
 
 
@@ -528,6 +674,8 @@ def MailandTLGreen : ConvergentRDetEvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Un
                 case right =>
                 constructor
                 exact Hinv34_phys
+                case right =>
+                sorry
 
     variant := sorry
 
@@ -639,7 +787,8 @@ def IslandTLGreen : ConvergentRDetEvent Nat (Bridge2 ctx) (Bridge3 ctx) Unit Uni
                 constructor
                 exact Hinv34_phys
                 case right =>
-                constructor
+                sorry
+
     variant := sorry
 
     convergence := sorry
@@ -778,13 +927,19 @@ def MainlandOutArr : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
       case right =>
       constructor
       exact Hinv33
+      case right =>
+      right
+      cases Hinv34
+      case inr hA =>
+        exact hA
+      case h.inl HX =>
+        sorry
 
 
 
 
 
 
-      -- all_goals (repeat constructor)
 
 
 
@@ -1212,7 +1367,7 @@ def MainlandOutDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
       exact fun a => Hinv19 a
       case right =>
       constructor
-      omega
+      sorry
 }
 
 def MainlandInDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
@@ -1295,8 +1450,60 @@ def MainlandInDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
       exact fun a a_1 => Hinv28 a a_1
       case right =>
       constructor
-      exact fun a =>
-        (fun {b a c} h => (Nat.sub_eq_iff_eq_add h).mpr) (Hinv14 Hgrd₁) (Hinv30 a (Hinv19 Hgrd₁))
+      intro HX1
+      exact (Nat.sub_eq_iff_eq_add (Hinv14 Hgrd₁)).mpr (Hinv30 HX1 (Hinv19 Hgrd₁))
+      case right =>
+      constructor
+      exact fun a => Mathlib.Tactic.LinearCombination'.pf_sub_c (Hinv32 a (Hinv19 Hgrd₁)) 1
+      case right =>
+      constructor
+      refine Nat.mul_eq_zero.mp ?left.a
+      refine Nat.mul_eq_zero.mpr ?left.a.a
+      refine Nat.mul_eq_zero.mp ?left.a.a.a
+      have HX2 : b.A = 0 ∨ b.C = 0 → b.A * (b.C - 1) = 0 := by
+        intro HX2'
+        cases HX2'
+        case inl HX3 =>
+          exact mul_eq_zero_of_left HX3 (b.C - 1)
+        case inr HX3 =>
+          exact Mathlib.Tactic.Ring.mul_congr rfl (congrFun (congrArg HSub.hSub HX3) 1) rfl
+      exact HX2 Hinv33_phys
+      case right =>
+      constructor
+      refine Nat.add_le_of_le_sub ?left.hle ?left.h
+      have HX3 : b.A + b.B + b.C ≤ ctx.maxCars → b.C - 1 ≤ ctx.maxCars := by
+        omega
+      exact HX3 Hinv34_phys
+      case left.h =>
+
+        have HX4 : b.A + b.B + b.C ≤ ctx.maxCars
+ → b.A + b.B + (b.C - 1) ≤ ctx.maxCars  →  b.A + b.B ≤ ctx.maxCars - (b.C - 1) := by
+          intros HX4' HX4''
+          exact Nat.le_sub_of_add_le HX4''
+        apply HX4
+        exact Hinv34_phys
+        omega
+      case right =>
+      constructor
+      exact Hinv₁
+      case right =>
+      constructor
+      exact Hinv₂
+      case right =>
+      constructor
+      exact Hinv₃
+      case right =>
+      constructor
+      exact Hinv₄
+      case right =>
+      constructor
+      exact Hinv₅
+      case right =>
+      constructor
+      exact Hinv33
+      case right =>
+      sorry
+
 }
 
 
@@ -1309,7 +1516,59 @@ def IslandInDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
                                A := b.A - 1
                                B := b.B + 1}
 
-    safety := sorry
+    safety := fun b => by
+      simp [Machine.invariant,
+      Bridge3.invariant_12,
+      Bridge3.invariant_13,
+      Bridge3.invariant_14,
+      Bridge3.invariant_15,
+      Bridge3.invariant_16,
+      Bridge3.invariant_17,
+      Bridge3.invariant_18,
+      Bridge3.invariant_19,
+      Bridge3.invariant_20,
+      Bridge3.invariant_21,
+      Bridge3.invariant_22,
+      Bridge3.invariant_23,
+      Bridge3.invariant_24,
+      Bridge3.invariant_25,
+      Bridge3.invariant_26,
+      Bridge3.invariant_27,
+      Bridge3.invariant_28,
+      Bridge3.invariant_29,
+      Bridge3.invariant_30,
+      Bridge3.invariant_31,
+      Bridge3.invariant_32,
+      Bridge3.invariant_33,
+      Bridge3.invariant_34]
+      intros Hinv12 Hinv13 Hinv14 Hinv15 Hinv16 Hinv17 Hinv18 Hinv19 Hinv20 Hinv21 Hinv22 Hinv23 Hinv24 Hinv25 Hinv26 Hinv27 Hinv28 Hinv29 Hinv30 Hinv31 Hinv32 Hinv33_phys Hinv34_phys Hinv₁ Hinv₂ Hinv₃ Hinv₄ Hinv₅ Hinv33 Hinv34 Hgrd₁
+      constructor
+      exact fun a => Hinv14 a
+      case right =>
+      constructor
+      exact fun a => Hinv15 a
+      case right =>
+      constructor
+      exact fun a => Hinv16 a
+      case right =>
+      constructor
+      exact fun a => Hinv18 a
+      case right =>
+      constructor
+      exact fun a => Hinv19 a
+      case right =>
+      constructor
+      exact fun a => Hinv20 a
+      case right =>
+      constructor
+      intro HX1
+      exact (Nat.sub_eq_iff_eq_add (Hinv12 Hgrd₁)).mpr (Hinv22 (Hinv17 Hgrd₁) HX1)
+      case right =>
+      constructor
+      exact fun a => Mathlib.Tactic.LinearCombination'.pf_sub_c (Hinv24 (Hinv17 Hgrd₁) a) 1
+      case right =>
+      sorry
+
 }
 
 
@@ -1322,5 +1581,33 @@ def IslandOutDep : OrdinaryEvent (Bridge3 ctx) Unit Unit :=
                                B := b.B - 1
                                C := b.C + 1}
 
-    safety := sorry
+    safety := fun b => by
+      simp [Machine.invariant,
+      Bridge3.invariant_12,
+      Bridge3.invariant_13,
+      Bridge3.invariant_14,
+      Bridge3.invariant_15,
+      Bridge3.invariant_16,
+      Bridge3.invariant_17,
+      Bridge3.invariant_18,
+      Bridge3.invariant_19,
+      Bridge3.invariant_20,
+      Bridge3.invariant_21,
+      Bridge3.invariant_22,
+      Bridge3.invariant_23,
+      Bridge3.invariant_24,
+      Bridge3.invariant_25,
+      Bridge3.invariant_26,
+      Bridge3.invariant_27,
+      Bridge3.invariant_28,
+      Bridge3.invariant_29,
+      Bridge3.invariant_30,
+      Bridge3.invariant_31,
+      Bridge3.invariant_32,
+      Bridge3.invariant_33,
+      Bridge3.invariant_34]
+      intros Hinv12 Hinv13 Hinv14 Hinv15 Hinv16 Hinv17 Hinv18 Hinv19 Hinv20 Hinv21 Hinv22 Hinv23 Hinv24 Hinv25 Hinv26 Hinv27 Hinv28 Hinv29 Hinv30 Hinv31 Hinv32 Hinv33_phys Hinv34_phys Hinv₁ Hinv₂ Hinv₃ Hinv₄ Hinv₅ Hinv33 Hinv34 Hgrd₁ Hgrd_2
+      constructor
+      sorry
+
 }
